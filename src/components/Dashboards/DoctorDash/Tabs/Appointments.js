@@ -51,9 +51,10 @@ function Appointments() {
             {appointments.map((appointment, index) => {
               return (
                 <Grid key={index} item xs={12}>
+                  {/* TODO: change to patient name */}
                   <DocAppointmentCard
-                    patient={appointment.patient}
-                    date={appointment.date}
+                    patient={appointment.patientEmail}
+                    date={appointment.appointmentDate}
                   />
                 </Grid>
               );
