@@ -50,10 +50,11 @@ export default function AppointmentCard(props) {
             Appointment with
           </Typography>
           <Typography variant="h5" component="div">
-            {props.doc}
+            {/* TODO: replace with doctor name */}
+            {props.doctorEmail}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            {`on ${props.date}`}
+            {`on ${props.appointmentDate}`}
           </Typography>
           <br />
           <CardActions disableSpacing>
