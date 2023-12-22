@@ -38,7 +38,7 @@ function MakePaymentPatinet() {
           alert(res.data.errorMsg);
         } else {
           setOpenBackdrop(false);
-          const myUnpaid = res.data.filter((unp) => unp.pemail === ptemail);
+          const myUnpaid = res.data.filter((unp) => unp.patientEmail === ptemail);
           setDues(myUnpaid);
           setDefMsg(
             myUnpaid.length === 0 &&
