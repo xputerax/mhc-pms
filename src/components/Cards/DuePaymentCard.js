@@ -18,9 +18,9 @@ export default function AppointmentCard(props) {
     navigate({
       pathname: `/dashboard/${props.caller}/make-payment`,
       search: `?${createSearchParams({
-        pemail: props.pemail,
-        demail: props.demail,
-        doa: props.doa,
+        pemail: props.patientEmail,
+        demail: props.doctorEmail,
+        doa: props.appointmentDate,
       })}`,
     });
   }
@@ -29,7 +29,7 @@ export default function AppointmentCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.cancelAppointment({
-        data: { pemail: props.pemail, demail: props.demail, doa: props.doa },
+        data: { patientEmail: props.patientEmail, doctorEmail: props.doctorEmail, appointmentDate: props.appointmentDate },
       });
       if (res.data.error) {
         setOpenBackdrop(false);
@@ -55,7 +55,8 @@ export default function AppointmentCard(props) {
             Payment Due for Appointment with
           </Typography>
           <Typography variant="h5" component="div">
-            {props.doc}
+            {/* TODO: replace with doctor name */}
+            {props.doctorEmail}
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {`on ${props.date}`}

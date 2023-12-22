@@ -80,10 +80,9 @@ function MakePaymentPatinet() {
                   <Grid key={index} item xs={12}>
                     <DuePaymentCard
                       key={index}
-                      pemail={due.pemail}
-                      demail={due.demail}
-                      doa={due.doa}
-                      doc={due.doctor}
+                      patientEmail={due.patientEmail}
+                      doctorEmail={due.doctorEmail}
+                      appointmentDate={due.appointmentDate}
                       date={due.date}
                       caller="patient"
                     />
