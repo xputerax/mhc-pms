@@ -28,7 +28,7 @@ function Appointments() {
         } else {
           setOpenBackdrop(false);
           const appoints = res.data.filter(
-            (appoint) => appoint.demail === demail
+            (appoint) => appoint.doctorEmail === demail
           );
           setAppointments(appoints);
           setDefMsg(appoints.length === 0 && "No upcoming appointments!");
