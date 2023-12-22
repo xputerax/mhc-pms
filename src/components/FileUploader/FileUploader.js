@@ -48,20 +48,29 @@ export default function FileUploader(props) {
     formData.append("prescriptionFile", file);
     try {
       const res = await api.uploadPrescription(formData);
-      if (res.data.error) {
-        setOpenBackdrop(false);
-        alert(res.data.errorMsg);
-      } else {
+      if (!res.data.error) {
         setOpenBackdrop(false);
         setFileName(null);
         setErrFileName(null);
         if (!alert(res.data.msg)) {
           window.location.reload();
         }
+        return
+      }
+
+      setOpenBackdrop(false);
+      if (res.data.errorMsg) {
+        alert(res.data.errorMsg);
+      } else {
+        alert('File upload failed')
       }
     } catch (error) {
       setOpenBackdrop(false);
-      alert(error.response.data.errorMsg);
+      if (error?.response?.data?.errorMsg) {
+        alert(error.response.data.errorMsg);
+      } else {
+        alert('File upload failed due to error')
+      }
       console.log(error);
     }
   }
