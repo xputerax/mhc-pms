@@ -4,6 +4,12 @@ import Typography from "@mui/material/Typography";
 import FileUploader from "../FileUploader/FileUploader";
 
 export default function UploadPrescriptionCard(props) {
+  const {
+    patientEmail,
+    doctorEmail,
+    appointmentDate,
+  } = props;
+
   return (
     <Card sx={{ maxWidth: "100%", textAlign: "center" }} variant="outlined">
       <CardContent>
@@ -12,7 +18,8 @@ export default function UploadPrescriptionCard(props) {
           Prescription to
         </Typography>
         <Typography variant="h5" component="div">
-          {props.patient}
+          {/* TODO: replace with patient name */}
+          {patientEmail}
         </Typography>
         <Typography variant="caption" color="text.secondary" component="div">
           {`appointment on: ${props.date}`}
@@ -20,9 +27,9 @@ export default function UploadPrescriptionCard(props) {
         <br /> <br />
         <FileUploader
           useKey={props.useKey}
-          pemail={props.pemail}
-          demail={props.demail}
-          doa={props.doa}
+          patientEmail={patientEmail}
+          doctorEmail={doctorEmail}
+          appointmentDate={appointmentDate}
         />
       </CardContent>
     </Card>

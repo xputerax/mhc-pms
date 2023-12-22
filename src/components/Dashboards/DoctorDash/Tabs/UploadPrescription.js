@@ -29,7 +29,7 @@ function UploadPrescription() {
           setOpenBackdrop(false);
           const appoints = res.data.filter(
             (appoint) =>
-              appoint.demail === demail && appoint.prescribed === false
+              appoint.doctorEmail === demail && appoint.prescribed === false
           );
           setAppointments(appoints);
           setDefMsg(
@@ -56,11 +56,12 @@ function UploadPrescription() {
                 <Grid key={index} item xs={12}>
                   <UploadPrescriptionCard
                     useKey={index}
+                    // TODO: replace with patient name
                     patient={apmt.patient}
                     date={apmt.date}
-                    pemail={apmt.pemail}
-                    demail={apmt.demail}
-                    doa={apmt.doa}
+                    patientEmail={apmt.patientEmail}
+                    doctorEmail={apmt.doctorEmail}
+                    appointmentDate={apmt.appointmentDate}
                   />
                 </Grid>
               );
