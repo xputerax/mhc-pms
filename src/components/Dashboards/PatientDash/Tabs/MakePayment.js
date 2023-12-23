@@ -21,9 +21,11 @@ function MakePaymentPatinet() {
   const [defMsg, setDefMsg] = useState("");
 
   const [searchParams] = useSearchParams();
-  const pemail = searchParams ? searchParams.get("pemail") : null;
-  const demail = searchParams ? searchParams.get("demail") : null;
-  const doa = searchParams ? searchParams.get("doa") : null;
+  const patientEmail = searchParams ? searchParams.get("patientEmail") : null;
+  const doctorEmail = searchParams ? searchParams.get("doctorEmail") : null;
+  const appointmentDate = searchParams
+    ? searchParams.get("appointmentDate")
+    : null;
 
   useEffect(() => {
     async function fetchUnpaid() {
@@ -38,7 +40,9 @@ function MakePaymentPatinet() {
           alert(res.data.errorMsg);
         } else {
           setOpenBackdrop(false);
-          const myUnpaid = res.data.filter((unp) => unp.pemail === ptemail);
+          const myUnpaid = res.data.filter(
+            (unp) => unp.patientEmail === ptemail
+          );
           setDues(myUnpaid);
           setDefMsg(
             myUnpaid.length === 0 &&
@@ -54,10 +58,12 @@ function MakePaymentPatinet() {
     fetchUnpaid();
   }, []);
 
-  if (pemail && demail && doa) {
+  if (patientEmail && doctorEmail && appointmentDate) {
     return (
       <Fragment>
-        <PaymentContext.Provider value={{ pemail, demail, doa }}>
+        <PaymentContext.Provider
+          value={{ patientEmail, doctorEmail, appointmentDate }}
+        >
           <Dashboard cards={cardTitles} lgspace={6} />
         </PaymentContext.Provider>
         <Backdrop
@@ -80,9 +86,9 @@ function MakePaymentPatinet() {
                   <Grid key={index} item xs={12}>
                     <DuePaymentCard
                       key={index}
-                      pemail={due.pemail}
-                      demail={due.demail}
-                      doa={due.doa}
+                      patientEmail={due.patientEmail}
+                      doctorEmail={due.doctorEmail}
+                      appointmentDate={due.appointmentDate}
                       doc={due.doctor}
                       date={due.date}
                       caller="patient"

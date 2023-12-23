@@ -42,9 +42,9 @@ export default function FileUploader(props) {
     e.preventDefault();
     setOpenBackdrop(true);
     const formData = new FormData();
-    formData.append("pemail", props.pemail);
-    formData.append("demail", props.demail);
-    formData.append("doa", props.doa);
+    formData.append("patientEmail", props.patientEmail);
+    formData.append("doctorEmail", props.doctorEmail);
+    formData.append("appointmentDate", props.appointmentDate);
     formData.append("prescriptionFile", file);
     try {
       const res = await api.uploadPrescription(formData);

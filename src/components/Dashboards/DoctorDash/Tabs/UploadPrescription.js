@@ -20,7 +20,7 @@ function UploadPrescription() {
       try {
         const token = localStorage.getItem("accessToken");
         const payload = token && jwt.decode(token);
-        const demail = payload.userType === "doctor" && payload.email;
+        const doctorEmail = payload.userType === "doctor" && payload.email;
         const res = await api.myAppointments();
         if (res.data.error) {
           setOpenBackdrop(false);
@@ -29,7 +29,8 @@ function UploadPrescription() {
           setOpenBackdrop(false);
           const appoints = res.data.filter(
             (appoint) =>
-              appoint.demail === demail && appoint.prescribed === false
+              appoint.doctorEmail === doctorEmail &&
+              appoint.prescribed === false
           );
           setAppointments(appoints);
           setDefMsg(
@@ -58,9 +59,9 @@ function UploadPrescription() {
                     useKey={index}
                     patient={apmt.patient}
                     date={apmt.date}
-                    pemail={apmt.pemail}
-                    demail={apmt.demail}
-                    doa={apmt.doa}
+                    patientEmail={apmt.patientEmail}
+                    doctorEmail={apmt.doctorEmail}
+                    appointmentDate={apmt.appointmentDate}
                   />
                 </Grid>
               );

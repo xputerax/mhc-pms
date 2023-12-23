@@ -50,7 +50,7 @@ function Feedbacks() {
                 <Grid key={index} item xs={12}>
                   <ViewFeedbackCard
                     heading={pfb.review}
-                    subheading={`by: ${pfb.patient} <${pfb.pemail}>`}
+                    subheading={`by: ${pfb.patient} <${pfb.patientEmail}>`}
                     rating={pfb.rating}
                   />
                 </Grid>

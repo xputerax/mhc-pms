@@ -16,16 +16,21 @@ export default function DashCard(props) {
   const srch =
     payment &&
     `?${createSearchParams({
-      pemail: payment.pemail,
-      demail: payment.demail,
-      doa: payment.doa,
+      patientEmail: payment.patientEmail,
+      doctorEmail: payment.doctorEmail,
+      appointmentDate: payment.appointmentDate,
     })}`;
 
   function handleClick(cardTitle) {
     let tab = cardTitle.toLowerCase();
     const tabName = tab.split(" ").join("-");
     if (pathname.charAt(pathname.length - 1) === "/") {
-      if (payment && payment.pemail && payment.demail && payment.doa) {
+      if (
+        payment &&
+        payment.patientEmail &&
+        payment.doctorEmail &&
+        payment.appointmentDate
+      ) {
         navigate({
           pathname: `${pathname}${tabName}`,
           search: srch,
@@ -34,7 +39,12 @@ export default function DashCard(props) {
         navigate(`${pathname}${tabName}`);
       }
     } else {
-      if (payment && payment.pemail && payment.demail && payment.doa) {
+      if (
+        payment &&
+        payment.patientEmail &&
+        payment.doctorEmail &&
+        payment.appointmentDate
+      ) {
         navigate({
           pathname: `${pathname}/${tabName}`,
           search: srch,

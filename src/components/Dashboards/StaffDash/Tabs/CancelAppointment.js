@@ -41,7 +41,7 @@ function CancelAppointment() {
       } else {
         setOpenBackdrop(false);
         const appoints = res.data.filter(
-          (appoint) => appoint.pemail === ptemail
+          (appoint) => appoint.patientEmail === ptemail
         );
         setAppointments(appoints);
         setSearched(true);
@@ -105,9 +105,9 @@ function CancelAppointment() {
                     <AppointmentCard
                       doc={appointment.doctor}
                       date={appointment.date}
-                      pemail={appointment.pemail}
-                      demail={appointment.demail}
-                      doa={appointment.doa}
+                      patientEmail={appointment.patientEmail}
+                      doctorEmail={appointment.doctorEmail}
+                      appointmentDate={appointment.appointmentDate}
                     />
                   </Grid>
                 );

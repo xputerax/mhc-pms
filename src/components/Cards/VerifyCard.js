@@ -50,7 +50,7 @@ export default function VerifyCard(props) {
             search: `?${createSearchParams({
               name: props.heading,
               degree: props.degree,
-              demail: props.subheading,
+              doctorEmail: props.subheading,
             })}`,
           });
         } else {

@@ -78,7 +78,7 @@ function BookAppointment(props) {
                     degree={doc.degree}
                     subheading={doc.wdays}
                     fee={doc.fee}
-                    demail={doc.email}
+                    doctorEmail={doc.email}
                     linkto={props.linkto}
                     date={value}
                   />
