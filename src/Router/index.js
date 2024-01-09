@@ -23,7 +23,7 @@ export default function MyRouter() {
         setUserType(userTyp && userTyp);
     }, []);
 
-    const router = createBrowserRouter([
+    const routes = [
         {
             path: '/',
             element: <HomePage />
@@ -42,17 +42,44 @@ export default function MyRouter() {
             path: '/signup',
             element: userType ? <Navigate to={`/dashboard/${userType}`} /> : <SignUp />
         },
-        userType === "admin" && { ...adminRouter(setUserType) },
-        userType === "doctor" && { ...doctorRouter(setUserType) },
-        userType === "patient" && { ...patientRouter(setUserType) },
-        userType === "staff" && { ...staffRouter(setUserType) },
-        {
-            path: '*',
-            element: <AuthContext.Provider value={{ userType }}>
-                <Page404 />
-            </AuthContext.Provider>,
-        },
-    ])
+        // userType === "admin" && { ...adminRouter(setUserType) },
+        // userType === "doctor" && { ...doctorRouter(setUserType) },
+        // userType === "patient" && { ...patientRouter(setUserType) },
+        // userType === "staff" && { ...staffRouter(setUserType) },
+    ]
+
+    if (userType === "admin") {
+        console.log("registering admin routes")
+        adminRouter(setUserType).forEach((r) => {
+            console.log(r)
+            routes.push(r)
+        })
+    } else if (userType === "doctor") {
+        console.log("registering doctor routes")
+        doctorRouter(setUserType).forEach((r) => {
+            routes.push(r)
+        })
+    } else if (userType === "patient") {
+        console.log("registering patient routes")
+        patientRouter(setUserType).forEach((r) => {
+            routes.push(r)
+        })
+    } else if (userType === "staff") {
+        console.log("registering staff routes")
+        staffRouter(setUserType).forEach((r) => {
+            routes.push(r)
+        })
+    }
+
+    routes.push({
+        path: '*',
+        element: <AuthContext.Provider value={{ userType }}>
+            <Page404 />
+        </AuthContext.Provider>,
+    })
+
+    const router = createBrowserRouter(routes)
+
     return (
         <RouterProvider router={router} />
     )
