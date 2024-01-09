@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
 import { Fragment } from "react";
-import DashBar from "../../../DashBar/DashBar";
+import DashBar from "../../../components/DashBar/DashBar";
 
 function ViewLocation() {
     const customStyle = {
