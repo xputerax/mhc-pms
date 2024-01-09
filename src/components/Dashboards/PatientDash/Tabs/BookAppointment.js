@@ -61,7 +61,7 @@ function BookAppointment(props) {
                     >
                         Dashboard
                     </Link>
-                    <Typography color="text.primary">View Location</Typography>
+                    <Typography color="text.primary">Book Appointment</Typography>
                 </Breadcrumbs>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
