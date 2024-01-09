@@ -7,14 +7,15 @@ import Button from "@mui/material/Button";
 import CancelIcon from "@mui/icons-material/Cancel";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import api from "../../api";
+import API from "../../api";
+import { message } from "antd";
 
 export default function AppointmentCard(props) {
   const [openBackdrop, setOpenBackdrop] = useState(false);
   async function handleCancel() {
     setOpenBackdrop(true);
     try {
-      const res = await api.cancelAppointment({
+      const res = await API.cancelAppointment({
         data: {
           patientEmail: props.patientEmail,
           doctorEmail: props.doctorEmail,
@@ -23,15 +24,15 @@ export default function AppointmentCard(props) {
       });
       if (res.data.error) {
         setOpenBackdrop(false);
-        alert(res.data.erroMsg);
+        message.error(res.data.erroMsg);
       } else {
         setOpenBackdrop(false);
-        alert(res.data.msg);
+        message.error(res.data.msg);
         window.location.reload();
       }
     } catch (error) {
       setOpenBackdrop(false);
-      alert(error.response.data.errorMsg);
+      message.error(error.response.data.errorMsg);
       console.log(error);
     }
   }

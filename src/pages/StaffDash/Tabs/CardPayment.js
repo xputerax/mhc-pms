@@ -10,10 +10,9 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import API from "../../../api";
 import { message } from "antd";
 
-function CashPay() {
-  const navigate = useNavigate();
+function CardPaymentStaff() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
-
+  const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const patientEmail = searchParams ? searchParams.get("patientEmail") : null;
   const doctorEmail = searchParams ? searchParams.get("doctorEmail") : null;
@@ -60,12 +59,12 @@ function CashPay() {
           paddingBottom: "3%",
         }}
       >
-        <img alt="cash-rupee" src="/images/rupee-money.png" />
+        <img alt="credit-card" src="/images/credit-card.png" />
         <br /> <br />
         <Typography variant="body1" gutterBottom component="div">
           {confirm
             ? "Download the invoice."
-            : "Confirm Payment after accepting cash."}
+            : "Confirm upon successful card payment."}
         </Typography>
         <br /> <br />
         {confirm ? (
@@ -94,4 +93,4 @@ function CashPay() {
   );
 }
 
-export default CashPay;
+export default CardPaymentStaff;

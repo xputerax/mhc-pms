@@ -17,8 +17,9 @@ import {
 
 import "react-credit-cards/es/styles-compiled.css";
 import "./CardPay.css";
-import api from "../../../api";
+import API from "../../../api";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { message } from "antd";
 
 function CardPay() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -79,21 +80,21 @@ function CardPay() {
     setOpenBackdrop(true);
     e.preventDefault();
     try {
-      const res = await api.makePayment({
+      const res = await API.makePayment({
         patientEmail,
         doctorEmail,
         appointmentDate,
       });
       if (res.data.error) {
         setOpenBackdrop(false);
-        alert(res.data.errorMsg);
+        message.error(res.data.errorMsg);
       } else {
         setOpenBackdrop(false);
-        alert(res.data.msg);
+        message.error(res.data.msg);
       }
     } catch (error) {
       setOpenBackdrop(false);
-      alert(error.response.data.errorMsg);
+      message.error(error.response.data.errorMsg);
       console.error(error);
     }
     setNumber("");

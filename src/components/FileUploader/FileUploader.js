@@ -6,7 +6,8 @@ import FormGroup from "@mui/material/FormGroup";
 import Typography from "@mui/material/Typography";
 import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
-import api from "../../api";
+import API from "../../api";
+import { message } from "antd";
 
 const Input = styled("input")({
   display: "none",
@@ -47,12 +48,15 @@ export default function FileUploader(props) {
     formData.append("appointmentDate", props.appointmentDate);
     formData.append("prescriptionFile", file);
     try {
-      const res = await api.uploadPrescription(formData);
-      if (!res.data.error) {
+      const res = await API.uploadPrescription(formData);
+      if (res.data.error) {
+        setOpenBackdrop(false);
+        message.error(res.data.errorMsg);
+      } else {
         setOpenBackdrop(false);
         setFileName(null);
         setErrFileName(null);
-        if (!alert(res.data.msg)) {
+        if (!message.error(res.data.msg)) {
           window.location.reload();
         }
         return
@@ -67,7 +71,7 @@ export default function FileUploader(props) {
     } catch (error) {
       setOpenBackdrop(false);
       if (error?.response?.data?.errorMsg) {
-        alert(error.response.data.errorMsg);
+        message.error(error.response.data.errorMsg);
       } else {
         alert('File upload failed due to error')
       }
