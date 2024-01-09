@@ -90,7 +90,7 @@ function MakePaymentPatinet() {
                                 Dashboard
                             </Link>
                             <Typography color="text.primary">
-                                View Location
+                                Make Payment
                             </Typography>
                         </Breadcrumbs>
                         <Grid container spacing={3}>
@@ -126,15 +126,29 @@ function MakePaymentPatinet() {
             return (
                 <Fragment>
                     <DashBar />
-                    <Container sx={{ textAlign: "center" }}>
-                        <Typography
-                            sx={{ marginTop: "30vh" }}
-                            variant="h5"
-                            gutterBottom
-                            component="div"
-                        >
-                            {defMsg}
-                        </Typography>
+                    <Container className="dash-container" maxWidth="md">
+                        <Breadcrumbs aria-label="breadcrumb">
+                            <Link
+                                underline="hover"
+                                color="inherit"
+                                href="/dashboard/patient"
+                            >
+                                Dashboard
+                            </Link>
+                            <Typography color="text.primary">
+                                Make Payment
+                            </Typography>
+                        </Breadcrumbs>
+                        <Container sx={{ textAlign: "center" }}>
+                            <Typography
+                                sx={{ marginTop: "30vh" }}
+                                variant="h5"
+                                gutterBottom
+                                component="div"
+                            >
+                                {defMsg}
+                            </Typography>
+                        </Container>
                     </Container>
                     <Backdrop
                         sx={{
