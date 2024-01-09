@@ -48,7 +48,7 @@ function Appointments() {
     return (
       <Fragment>
         <DashBar />
-        <Container className="dash-container" maxWidth="md">
+        <Container className="dash-container" maxWidth="lg">
           <Breadcrumbs aria-label="breadcrumb">
             <Link
               underline="hover"
@@ -86,7 +86,7 @@ function Appointments() {
     return (
       <Fragment>
         <DashBar />
-        <Container className="dash-container" maxWidth="md">
+        <Container className="dash-container" maxWidth="lg">
           <Breadcrumbs aria-label="breadcrumb">
             <Link
               underline="hover"
