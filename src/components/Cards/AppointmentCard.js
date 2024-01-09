@@ -15,7 +15,15 @@ export default function AppointmentCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.cancelAppointment({
+<<<<<<< HEAD
         data: { patientEmail: props.patientEmail, doctorEmail: props.doctorEmail, appointmentDate: props.appointmentDate },
+=======
+        data: {
+          patientEmail: props.patientEmail,
+          doctorEmail: props.doctorEmail,
+          appointmentDate: props.appointmentDate,
+        },
+>>>>>>> github/clearing-name
       });
       if (res.data.error) {
         setOpenBackdrop(false);
@@ -33,7 +41,7 @@ export default function AppointmentCard(props) {
   }
 
   const dateInPast = () => {
-    const firstDate = new Date(parseInt(props.doa));
+    const firstDate = new Date(parseInt(props.appointmentDate));
     const secondDate = new Date();
     if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
       return true;

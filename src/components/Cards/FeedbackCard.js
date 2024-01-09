@@ -28,9 +28,9 @@ export default function FeedbackCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.writeFeedback({
-        pemail: props.pemail,
-        demail: props.demail,
-        doa: props.doa,
+        patientEmail: props.patientEmail,
+        doctorEmail: props.doctorEmail,
+        appointmentDate: props.appointmentDate,
         rating: value,
         review: feedbackText,
       });
@@ -53,9 +53,9 @@ export default function FeedbackCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.deleteFeedback({
-        pemail: props.pemail,
-        demail: props.demail,
-        doa: props.doa,
+        patientEmail: props.patientEmail,
+        doctorEmail: props.doctorEmail,
+        appointmentDate: props.appointmentDate,
         rating: value,
         review: feedbackText,
       });

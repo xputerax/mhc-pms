@@ -18,9 +18,9 @@ export default function AppointmentCard(props) {
     navigate({
       pathname: `/dashboard/${props.caller}/make-payment`,
       search: `?${createSearchParams({
-        pemail: props.patientEmail,
-        demail: props.doctorEmail,
-        doa: props.appointmentDate,
+        patientEmail: props.patientEmail,
+        doctorEmail: props.doctorEmail,
+        appointmentDate: props.appointmentDate,
       })}`,
     });
   }
@@ -29,7 +29,11 @@ export default function AppointmentCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.cancelAppointment({
-        data: { patientEmail: props.patientEmail, doctorEmail: props.doctorEmail, appointmentDate: props.appointmentDate },
+        data: {
+          patientEmail: props.patientEmail,
+          doctorEmail: props.doctorEmail,
+          appointmentDate: props.appointmentDate,
+        },
       });
       if (res.data.error) {
         setOpenBackdrop(false);

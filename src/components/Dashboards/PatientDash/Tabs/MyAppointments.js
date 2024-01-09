@@ -63,7 +63,7 @@ function MyAppointments() {
 
   const hideCompleted = () => {
     const upcoming = allAppoints.filter(
-      (appointmnt) => !dateInPast(appointmnt.doa)
+      (appointmnt) => !dateInPast(appointmnt.appointmentDate)
     );
     setAppointments(upcoming);
     setHidden(true);

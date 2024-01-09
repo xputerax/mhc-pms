@@ -36,8 +36,11 @@ function Feedback() {
           setOpenBackdrop(false);
           const appoints = res.data.filter(
             (appoint) =>
-              appoint.pemail === ptemail &&
-              dateInPast(new Date(parseInt(appoint.doa)), new Date())
+              appoint.patientEmail === ptemail &&
+              dateInPast(
+                new Date(parseInt(appoint.appointmentDate)),
+                new Date()
+              )
           );
           setAppointments(appoints);
           setDefMsg(
@@ -66,9 +69,9 @@ function Feedback() {
                   <FeedbackCard
                     doc={appointment.doctor}
                     date={appointment.date}
-                    pemail={appointment.pemail}
-                    demail={appointment.demail}
-                    doa={appointment.doa}
+                    patientEmail={appointment.patientEmail}
+                    doctorEmail={appointment.doctorEmail}
+                    appointmentDate={appointment.appointmentDate}
                     initialReview={appointment.review}
                     initialRating={appointment.rating}
                     feedbackAvailable={appointment.feedback}

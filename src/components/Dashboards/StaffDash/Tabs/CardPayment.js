@@ -14,15 +14,21 @@ function CardPaymentStaff() {
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();
-  const pemail = searchParams ? searchParams.get("pemail") : null;
-  const demail = searchParams ? searchParams.get("demail") : null;
-  const doa = searchParams ? searchParams.get("doa") : null;
+  const patientEmail = searchParams ? searchParams.get("patientEmail") : null;
+  const doctorEmail = searchParams ? searchParams.get("doctorEmail") : null;
+  const appointmentDate = searchParams
+    ? searchParams.get("appointmentDate")
+    : null;
   const [confirm, setConfirm] = useState(false);
 
   async function handleConfirm() {
     setOpenBackdrop(true);
     try {
-      const res = await api.makePayment({ pemail, demail, doa });
+      const res = await api.makePayment({
+        patientEmail,
+        doctorEmail,
+        appointmentDate,
+      });
       if (res.data.error) {
         setOpenBackdrop(false);
         alert(res.data.errorMsg);

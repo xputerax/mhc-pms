@@ -24,9 +24,11 @@ function MakePaymentStaff() {
   const [email, setEmail] = useState("");
 
   const [searchParams] = useSearchParams();
-  const pemail = searchParams ? searchParams.get("pemail") : null;
-  const demail = searchParams ? searchParams.get("demail") : null;
-  const doa = searchParams ? searchParams.get("doa") : null;
+  const patientEmail = searchParams ? searchParams.get("patientEmail") : null;
+  const doctorEmail = searchParams ? searchParams.get("doctorEmail") : null;
+  const appointmentDate = searchParams
+    ? searchParams.get("appointmentDate")
+    : null;
 
   const validateEmail = (email) => {
     return String(email)
@@ -51,7 +53,7 @@ function MakePaymentStaff() {
         alert(res.data.errorMsg);
       } else {
         setOpenBackdrop(false);
-        const unpaids = res.data.filter((unp) => unp.pemail === ptemail);
+        const unpaids = res.data.filter((unp) => unp.patientEmail === ptemail);
         setDues(unpaids);
         setSearched(true);
       }
@@ -66,10 +68,12 @@ function MakePaymentStaff() {
     setEmail(event.target.value);
   }
 
-  if (pemail && demail && doa) {
+  if (patientEmail && doctorEmail && appointmentDate) {
     return (
       <Fragment>
-        <StaffPaymentContext.Provider value={{ pemail, demail, doa }}>
+        <StaffPaymentContext.Provider
+          value={{ patientEmail, doctorEmail, appointmentDate }}
+        >
           <Dashboard cards={cardTitles} lgspace={4} from="staff" />
         </StaffPaymentContext.Provider>
         <Backdrop
@@ -93,9 +97,9 @@ function MakePaymentStaff() {
                     <Grid key={index} item xs={12}>
                       <DuePaymentCard
                         key={index}
-                        pemail={due.pemail}
-                        demail={due.demail}
-                        doa={due.doa}
+                        patientEmail={due.patientEmail}
+                        doctorEmail={due.doctorEmail}
+                        appointmentDate={due.appointmentDate}
                         doc={due.doctor}
                         date={due.date}
                         caller="staff"

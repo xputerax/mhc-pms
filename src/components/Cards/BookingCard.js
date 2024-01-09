@@ -33,7 +33,7 @@ export default function BookingCard(props) {
     const token = localStorage.getItem("accessToken");
     const payload = token && jwt.decode(token);
     const patient = payload && payload.name;
-    const pemail =
+    const patientEmail =
       payload && payload.userType === "patient" ? payload.email : props.ptemail;
     const d = new Date(props.date);
     const months = [
@@ -57,10 +57,10 @@ export default function BookingCard(props) {
     const postData = {
       patient: patient,
       doctor: props.heading,
-      pemail: pemail,
-      demail: props.demail,
+      patientEmail: patientEmail,
+      doctorEmail: props.doctorEmail,
       date: date,
-      doa: Date.parse(props.date),
+      appointmentDate: Date.parse(props.date),
     };
     try {
       const res = await api.bookAppointment(postData);
@@ -72,9 +72,9 @@ export default function BookingCard(props) {
         navigate({
           pathname: `/dashboard/${props.linkto}/make-payment`,
           search: `?${createSearchParams({
-            pemail,
-            demail: props.demail,
-            doa: Date.parse(props.date),
+            patientEmail,
+            doctorEmail: props.doctorEmail,
+            appointmentDate: Date.parse(props.date),
           })}`,
         });
       }

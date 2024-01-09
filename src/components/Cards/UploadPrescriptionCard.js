@@ -27,9 +27,9 @@ export default function UploadPrescriptionCard(props) {
         <br /> <br />
         <FileUploader
           useKey={props.useKey}
-          patientEmail={patientEmail}
-          doctorEmail={doctorEmail}
-          appointmentDate={appointmentDate}
+          patientEmail={props.patientEmail}
+          doctorEmail={props.doctorEmail}
+          appointmentDate={props.appointmentDate}
         />
       </CardContent>
     </Card>

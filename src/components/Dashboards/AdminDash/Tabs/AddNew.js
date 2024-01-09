@@ -19,11 +19,11 @@ function AddNew() {
   const [searchParams] = useSearchParams();
   const nm = searchParams.get("name");
   const dg = searchParams.get("degree");
-  const demail = searchParams.get("demail");
+  const doctorEmail = searchParams.get("doctorEmail");
   const [succOpen, setSuccOpen] = useState(false);
   const [errOpen, setErrOpen] = useState(false);
   const [fullName, setFullName] = useState(nm ? nm : "");
-  const [email, setEmail] = useState(demail ? demail : "");
+  const [email, setEmail] = useState(doctorEmail ? doctorEmail : "");
   const [weekDays, setWeekDays] = useState({
     Sun: { checked: false, value: null },
     Mon: { checked: false, value: null },
@@ -364,7 +364,7 @@ function AddNew() {
             </div>
           </form>
         </div>
-        {nm && dg && demail && (
+        {nm && dg && doctorEmail && (
           <Typography variant="caption" gutterBottom component="div">
             * List will not be updated if you leave the page without submitting.
             *
