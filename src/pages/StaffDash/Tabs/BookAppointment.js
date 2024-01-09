@@ -12,6 +12,7 @@ import Box from "@mui/material/Box";
 import API from "../../../api";
 import DashBar from "../../../components/DashBar/DashBar";
 import BookingCard from "../../../components/Cards/BookingCard";
+import { Breadcrumbs, Link } from "@mui/material";
 
 function BookAppointmentStaff(props) {
   const [bookingList, setBookingList] = useState([]);
@@ -57,6 +58,16 @@ function BookAppointmentStaff(props) {
     <Fragment>
       <DashBar />
       <Container className="dash-container" maxWidth="lg">
+        <Breadcrumbs aria-label="breadcrumb">
+          <Link
+            underline="hover"
+            color="inherit"
+            href="/dashboard/staff"
+          >
+            Dashboard
+          </Link>
+          <Typography color="text.primary">Book Appointment</Typography>
+        </Breadcrumbs>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DatePicker
             label="Appointment Date"
