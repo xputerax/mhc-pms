@@ -90,7 +90,7 @@ function MyAppointments() {
                             Dashboard
                         </Link>
                         <Typography color="text.primary">
-                            View Location
+                            My Appointments
                         </Typography>
                     </Breadcrumbs>
                     {!hidden ? (
@@ -146,15 +146,29 @@ function MyAppointments() {
         return (
             <Fragment>
                 <DashBar />
-                <Container sx={{ textAlign: "center" }}>
-                    <Typography
-                        sx={{ marginTop: "30vh" }}
-                        variant="h5"
-                        gutterBottom
-                        component="div"
-                    >
-                        {defMsg}
-                    </Typography>
+                <Container className="dash-container" maxWidth="md">
+                    <Breadcrumbs aria-label="breadcrumb">
+                      <Link
+                          underline="hover"
+                          color="inherit"
+                          href="/dashboard/patient"
+                      >
+                          Dashboard
+                      </Link>
+                      <Typography color="text.primary">
+                          My Appointments
+                      </Typography>
+                    </Breadcrumbs>
+                    <Container sx={{ textAlign: "center" }}>
+                      <Typography
+                          sx={{ marginTop: "30vh" }}
+                          variant="h5"
+                          gutterBottom
+                          component="div"
+                      >
+                          {defMsg}
+                      </Typography>
+                    </Container>
                 </Container>
                 <Backdrop
                     sx={{
