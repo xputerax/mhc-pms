@@ -9,6 +9,8 @@ import DashBar from "../../../components/DashBar/DashBar";
 import UploadPrescriptionCard from "../../../components/Cards/UploadPrescriptionCard";
 import API from "../../../api";
 import { message } from "antd";
+import { Breadcrumbs } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function UploadPrescription() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -52,6 +54,16 @@ function UploadPrescription() {
       <Fragment>
         <DashBar />
         <Container className="dash-container" maxWidth="md">
+        <Breadcrumbs aria-label="breadcrumb">
+              <Link
+                  underline="hover"
+                  color="inherit"
+                  href="/dashboard/patient"
+              >
+                  Dashboard
+              </Link>
+              <Typography color="text.primary">Upload Prescription</Typography>
+          </Breadcrumbs>
           <Grid container spacing={3}>
             {appointments.map((apmt, index) => {
               return (
@@ -82,15 +94,27 @@ function UploadPrescription() {
     return (
       <Fragment>
         <DashBar />
-        <Container sx={{ textAlign: "center" }}>
-          <Typography
-            sx={{ marginTop: "30vh" }}
-            variant="h5"
-            gutterBottom
-            component="div"
-          >
-            {defMsg}
-          </Typography>
+        <Container className="dash-container" maxWidth="lg">
+          <Breadcrumbs aria-label="breadcrumb">
+              <Link
+                  underline="hover"
+                  color="inherit"
+                  href="/dashboard/patient"
+              >
+                  Dashboard
+              </Link>
+              <Typography color="text.primary">Upload Prescription</Typography>
+          </Breadcrumbs>
+          <Container sx={{ textAlign: "center" }}>
+            <Typography
+              sx={{ marginTop: "30vh" }}
+              variant="h5"
+              gutterBottom
+              component="div"
+            >
+              {defMsg}
+            </Typography>
+          </Container>
         </Container>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
