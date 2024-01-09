@@ -15,15 +15,11 @@ export default function AppointmentCard(props) {
     setOpenBackdrop(true);
     try {
       const res = await api.cancelAppointment({
-<<<<<<< HEAD
-        data: { patientEmail: props.patientEmail, doctorEmail: props.doctorEmail, appointmentDate: props.appointmentDate },
-=======
         data: {
           patientEmail: props.patientEmail,
           doctorEmail: props.doctorEmail,
           appointmentDate: props.appointmentDate,
         },
->>>>>>> github/clearing-name
       });
       if (res.data.error) {
         setOpenBackdrop(false);
