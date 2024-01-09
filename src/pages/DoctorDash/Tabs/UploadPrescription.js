@@ -9,8 +9,7 @@ import DashBar from "../../../components/DashBar/DashBar";
 import UploadPrescriptionCard from "../../../components/Cards/UploadPrescriptionCard";
 import API from "../../../api";
 import { message } from "antd";
-import { Breadcrumbs } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Breadcrumbs, Link } from "@mui/material";
 
 function UploadPrescription() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -58,7 +57,7 @@ function UploadPrescription() {
               <Link
                   underline="hover"
                   color="inherit"
-                  href="/dashboard/patient"
+                  href="/dashboard/doctor"
               >
                   Dashboard
               </Link>
@@ -95,11 +94,11 @@ function UploadPrescription() {
       <Fragment>
         <DashBar />
         <Container className="dash-container" maxWidth="lg">
-          <Breadcrumbs aria-label="breadcrumb">
+        <Breadcrumbs aria-label="breadcrumb">
               <Link
                   underline="hover"
                   color="inherit"
-                  href="/dashboard/patient"
+                  href="/dashboard/doctor"
               >
                   Dashboard
               </Link>
