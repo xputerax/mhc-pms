@@ -9,6 +9,7 @@ import API from "../../../api";
 import DashBar from "../../../components/DashBar/DashBar";
 import DocAppointmentCard from "../../../components/Cards/DocAppointmentCard";
 import { message } from "antd";
+import { Breadcrumbs, Link } from "@mui/material";
 
 function Appointments() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -48,6 +49,17 @@ function Appointments() {
       <Fragment>
         <DashBar />
         <Container className="dash-container" maxWidth="md">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              color="inherit"
+              href="/dashboard/doctor"
+            >
+              Dashboard
+            </Link>
+            <Typography color="text.primary">Appointments</Typography>
+          </Breadcrumbs>
+
           <Grid container spacing={3}>
             {appointments.map((appointment, index) => {
               return (
@@ -74,15 +86,27 @@ function Appointments() {
     return (
       <Fragment>
         <DashBar />
-        <Container sx={{ textAlign: "center" }}>
-          <Typography
-            sx={{ marginTop: "30vh" }}
-            variant="h5"
-            gutterBottom
-            component="div"
-          >
-            {defMsg}
-          </Typography>
+        <Container className="dash-container" maxWidth="md">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              color="inherit"
+              href="/dashboard/doctor"
+            >
+              Dashboard
+            </Link>
+            <Typography color="text.primary">Appointments</Typography>
+          </Breadcrumbs>
+          <Container sx={{ textAlign: "center" }}>
+            <Typography
+              sx={{ marginTop: "30vh" }}
+              variant="h5"
+              gutterBottom
+              component="div"
+            >
+              {defMsg}
+            </Typography>
+          </Container>
         </Container>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
