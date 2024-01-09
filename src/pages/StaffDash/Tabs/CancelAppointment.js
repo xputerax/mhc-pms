@@ -11,6 +11,7 @@ import API from "../../../api";
 import DashBar from "../../../components/DashBar/DashBar";
 import AppointmentCard from "../../../components/Cards/AppointmentCard";
 import { message } from "antd";
+import { Breadcrumbs, Link } from "@mui/material";
 
 function CancelAppointment() {
   const [openBackdrop, setOpenBackdrop] = useState(false);
@@ -63,27 +64,40 @@ function CancelAppointment() {
     return (
       <Fragment>
         <DashBar />
-        <Container sx={{ textAlign: "center" }}>
-          <Stack
-            spacing={0}
-            direction="row"
-            sx={{ marginTop: "30vh" }}
-            justifyContent="center"
-          >
-            <TextField
-              id="outlined-basic"
-              label="Patient's Email Id"
-              type="email"
-              value={email}
-              onChange={handleChange}
-              variant="outlined"
-              autoComplete="off"
-              sx={{ width: "90%" }}
-            />
-            <Button onClick={fetchAppointments} variant="outlined">
-              Search
-            </Button>
-          </Stack>
+        <Container className="dash-container" maxWidth="lg">
+          <Breadcrumbs aria-label="breadcrumb">
+            <Link
+              underline="hover"
+              color="inherit"
+              href="/dashboard/staff"
+            >
+              Dashboard
+            </Link>
+            <Typography color="text.primary">Cancel Appointment</Typography>
+          </Breadcrumbs>
+
+          <Container sx={{ textAlign: "center" }}>
+            <Stack
+              spacing={0}
+              direction="row"
+              sx={{ marginTop: "30vh" }}
+              justifyContent="center"
+            >
+              <TextField
+                id="outlined-basic"
+                label="Patient's Email Id"
+                type="email"
+                value={email}
+                onChange={handleChange}
+                variant="outlined"
+                autoComplete="off"
+                sx={{ width: "90%" }}
+              />
+              <Button onClick={fetchAppointments} variant="outlined">
+                Search
+              </Button>
+            </Stack>
+          </Container>
         </Container>
         <Backdrop
           sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -99,6 +113,16 @@ function CancelAppointment() {
         <Fragment>
           <DashBar />
           <Container className="dash-container" maxWidth="md">
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link
+                underline="hover"
+                color="inherit"
+                href="/dashboard/staff"
+              >
+                Dashboard
+              </Link>
+              <Typography color="text.primary">Cancel Appointment</Typography>
+            </Breadcrumbs>
             <Grid container spacing={3}>
               {appointments.map((appointment, index) => {
                 return (

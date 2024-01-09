@@ -13,6 +13,7 @@ import Dashboard from "../../../components/Dashboards/Dashboard";
 import DashBar from "../../../components/DashBar/DashBar";
 import DuePaymentCard from "../../../components/Cards/DuePaymentCard";
 import { message } from "antd";
+import { Breadcrumbs, Link } from "@mui/material";
 
 export const StaffPaymentContext = React.createContext();
 
@@ -91,7 +92,13 @@ function MakePaymentStaff() {
         return (
           <Fragment>
             <DashBar />
-            <Container className="dash-container" maxWidth="md">
+            <Container className="dash-container" maxWidth="lg">
+              <Breadcrumbs aria-label="breadcrumb">
+                <Link underline="hover" color="inherit" href="/dashboard/staff">
+                  Dashboard
+                </Link>
+                <Typography color="text.primary">Make Payment</Typography>
+              </Breadcrumbs>
               <Grid container spacing={3}>
                 {dues.map((due, index) => {
                   return (
@@ -122,15 +129,24 @@ function MakePaymentStaff() {
         return (
           <Fragment>
             <DashBar />
-            <Container sx={{ textAlign: "center" }}>
-              <Typography
-                sx={{ marginTop: "30vh" }}
-                variant="h5"
-                gutterBottom
-                component="div"
-              >
-                **This patient don't have any outstanding payment.**
-              </Typography>
+            <Container className="dash-container" maxWidth="lg">
+              <Breadcrumbs aria-label="breadcrumb">
+                <Link underline="hover" color="inherit" href="/dashboard/staff">
+                  Dashboard
+                </Link>
+                <Typography color="text.primary">Make Payment</Typography>
+              </Breadcrumbs>
+
+              <Container sx={{ textAlign: "center" }}>
+                <Typography
+                  sx={{ marginTop: "30vh" }}
+                  variant="h5"
+                  gutterBottom
+                  component="div"
+                >
+                  **This patient don't have any outstanding payment.**
+                </Typography>
+              </Container>
             </Container>
             <Backdrop
               sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
@@ -145,27 +161,35 @@ function MakePaymentStaff() {
       return (
         <Fragment>
           <DashBar />
-          <Container sx={{ textAlign: "center" }}>
-            <Stack
-              spacing={0}
-              direction="row"
-              sx={{ marginTop: "30vh" }}
-              justifyContent="center"
-            >
-              <TextField
-                id="outlined-basic"
-                label="Patient's Email Id"
-                type="email"
-                value={email}
-                onChange={handleEmailChange}
-                variant="outlined"
-                autoComplete="off"
-                sx={{ width: "90%" }}
-              />
-              <Button onClick={fetchUnpaid} variant="outlined">
-                Search
-              </Button>
-            </Stack>
+          <Container className="dash-container" maxWidth="lg">
+            <Breadcrumbs aria-label="breadcrumb">
+              <Link underline="hover" color="inherit" href="/dashboard/staff">
+                Dashboard
+              </Link>
+              <Typography color="text.primary">Make Payment</Typography>
+            </Breadcrumbs>
+            <Container sx={{ textAlign: "center" }}>
+              <Stack
+                spacing={0}
+                direction="row"
+                sx={{ marginTop: "30vh" }}
+                justifyContent="center"
+              >
+                <TextField
+                  id="outlined-basic"
+                  label="Patient's Email Id"
+                  type="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  variant="outlined"
+                  autoComplete="off"
+                  sx={{ width: "90%" }}
+                />
+                <Button onClick={fetchUnpaid} variant="outlined">
+                  Search
+                </Button>
+              </Stack>
+            </Container>
           </Container>
           <Backdrop
             sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
