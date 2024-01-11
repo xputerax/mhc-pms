@@ -6,8 +6,6 @@ import FileUploader from "../FileUploader/FileUploader";
 export default function UploadPrescriptionCard(props) {
   const {
     patientEmail,
-    doctorEmail,
-    appointmentDate,
   } = props;
 
   return (
